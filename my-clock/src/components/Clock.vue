@@ -15,7 +15,7 @@ function updateTime(format) {
   // console.log(format)
   if (format === "12-hour") {
     if (hours >= 12 || hours === 0) {
-      AM_PM = " PM";
+      AM_PM = "PM";
       if (hours === 0) {
         hours = 12;
       }
@@ -23,10 +23,10 @@ function updateTime(format) {
         hours -= 12;
       }
     } else {
-      AM_PM = " AM";
+      AM_PM = "AM";
     }
   }
-  time.value = `${hours}:${minutes}:${seconds}${AM_PM}`;
+  time.value = `${hours}:${minutes}:${seconds} ${AM_PM}`;
 }
 
 let format = "12-hour";
