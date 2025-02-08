@@ -21,6 +21,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         exampleProject: resolve(__dirname, "./example-project/app.html"),
         myClock: resolve(__dirname, "./my-clock/app.html"),
+        noRollover: resolve(__dirname, "./no-rollover/app.html"),
       },
     },
   },
