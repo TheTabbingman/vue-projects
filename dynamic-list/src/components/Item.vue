@@ -5,16 +5,7 @@ defineProps({
     required: true,
   },
 });
-defineEmits({
-  deleteEvent: (index) => {
-    if (index >= 0) {
-      return true;
-    } else {
-      console.warn("index is negative");
-      return false;
-    }
-  },
-});
+defineEmits(["deleteEvent"]);
 </script>
 
 <template>
