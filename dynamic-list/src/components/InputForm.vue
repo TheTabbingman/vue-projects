@@ -1,6 +1,6 @@
 <script setup>
-import ItemList from "./ItemList.vue";
 import { onMounted, ref } from "vue";
+import Item from "./Item.vue";
 
 const input = ref("");
 const inputArray = ref([]);
@@ -32,5 +32,15 @@ function removeItem(index) {
     />
     <button type="submit" class="btn btn-primary mt-2">Submit</button>
   </form>
-  <ItemList :inputArray="inputArray" @delete-event="(e) => removeItem(e)" />
+  <h2>Items</h2>
+  <div class="list">
+    <ul class="list-group">
+      <Item
+        v-for="(input, index) in inputArray"
+        :key="index"
+        :title="input"
+        @delete-event="removeItem"
+      />
+    </ul>
+  </div>
 </template>
