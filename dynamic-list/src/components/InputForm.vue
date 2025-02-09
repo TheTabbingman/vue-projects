@@ -1,16 +1,23 @@
 <script setup>
 import ItemList from "./ItemList.vue";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 const input = ref("");
 const inputArray = ref([]);
+
+onMounted(() => {
+  inputArray.value = JSON.parse(localStorage.getItem("inputArray"));
+});
+
 function addItem() {
   if (input.value === "") return;
   inputArray.value.push(input.value);
+  localStorage.setItem("inputArray", JSON.stringify(inputArray.value));
 }
 function removeItem(index) {
   if (!inputArray.value.length) return;
   inputArray.value.splice(index, 1);
+  localStorage.setItem("inputArray", JSON.stringify(inputArray.value));
 }
 </script>
 
