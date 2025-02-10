@@ -1,24 +1,37 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import Item from "./Item.vue";
+/**
+ * @template T
+ * @typedef {import("vue").Ref<T>} Ref
+ */
 
 const input = ref("");
-const inputArray = ref([]);
+const itemArray = ref([""]);
 
 onMounted(() => {
-  if (localStorage.getItem("inputArray") === null) inputArray.value = [];
-  else inputArray.value = JSON.parse(localStorage.getItem("inputArray"));
+  const localStorageOutput = localStorage.getItem("itemArray");
+  if (localStorageOutput) itemArray.value = JSON.parse(localStorageOutput);
+  else itemArray.value = [];
 });
 
+/**
+ * Add item from input into the itemArray
+ */
 function addItem() {
   if (input.value === "") return;
-  inputArray.value.push(input.value);
-  localStorage.setItem("inputArray", JSON.stringify(inputArray.value));
+  itemArray.value.push(input.value);
+  localStorage.setItem("itemArray", JSON.stringify(itemArray.value));
 }
+
+/**
+ * Remove item from the item array which also removes it from the dom
+ * @param {number} index - Index of the item to remove from the array
+ */
 function removeItem(index) {
-  if (!inputArray.value.length) return;
-  inputArray.value.splice(index, 1);
-  localStorage.setItem("inputArray", JSON.stringify(inputArray.value));
+  if (!itemArray.value.length) return;
+  itemArray.value.splice(index, 1);
+  localStorage.setItem("itemArray", JSON.stringify(itemArray.value));
 }
 </script>
 
@@ -37,7 +50,7 @@ function removeItem(index) {
   <div class="list">
     <ul class="list-group">
       <Item
-        v-for="(input, index) in inputArray"
+        v-for="(input, index) in itemArray"
         :key="index"
         :title="input"
         @delete-event="removeItem"
