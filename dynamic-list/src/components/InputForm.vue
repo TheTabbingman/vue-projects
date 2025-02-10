@@ -6,7 +6,8 @@ const input = ref("");
 const inputArray = ref([]);
 
 onMounted(() => {
-  inputArray.value = JSON.parse(localStorage.getItem("inputArray"));
+  if (localStorage.getItem("inputArray") === null) inputArray.value = [];
+  else inputArray.value = JSON.parse(localStorage.getItem("inputArray"));
 });
 
 function addItem() {
