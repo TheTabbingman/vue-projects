@@ -1,9 +1,17 @@
 <script setup>
 let pressed = false;
+/**
+ * Prevents pressing a key before another key is released
+ * @param {KeyboardEvent} e - The keyboard event object
+ */
 function keydown(e) {
   if (pressed) e.preventDefault();
   else pressed = true;
 }
+/**
+ * Resets the pressed flag when a key is released
+ * @returns {boolean} - The pressed flag
+ */
 const keyup = () => (pressed = false);
 </script>
 
