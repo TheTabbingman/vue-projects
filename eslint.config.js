@@ -2,6 +2,7 @@ import js from "@eslint/js";
 import pluginVue from "eslint-plugin-vue";
 import skipFormatting from "@vue/eslint-config-prettier/skip-formatting";
 import jsdoc from "eslint-plugin-jsdoc";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 
 export default [
   {
@@ -18,6 +19,7 @@ export default [
   ...pluginVue.configs["flat/essential"],
   skipFormatting,
   jsdoc.configs["flat/recommended"],
+  eslintPluginPrettierRecommended,
   {
     rules: {
       "prefer-const": "warn",
