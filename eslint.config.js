@@ -29,6 +29,7 @@ export default [
             FunctionDeclaration: true,
             MethodDefinition: true,
             ClassDeclaration: true,
+            ArrowFunctionExpression: true,
           },
         },
       ],
