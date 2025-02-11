@@ -1,9 +1,13 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 
-let time = ref("");
+const time = ref("");
+/** @type {number | null} */
 let timeInterval = null;
 
+/**
+ * @param {string} format - Clock format which is either 12-hour or 24-hour
+ */
 function updateTime(format) {
   const currentTime = new Date();
   // const testTime = new Date("2022-01-01 0:00:00")
@@ -31,6 +35,9 @@ function updateTime(format) {
 
 let format = "12-hour";
 
+/**
+ * Switch between 12-hour and 24-hour format
+ */
 function switchFormat() {
   switch (format) {
     case "12-hour":
@@ -48,8 +55,10 @@ onMounted(() => {
   timeInterval = setInterval(() => updateTime(format), 1000);
 });
 onUnmounted(() => {
-  clearInterval(timeInterval);
-  timeInterval = null;
+  if (timeInterval) {
+    clearInterval(timeInterval);
+    timeInterval = null;
+  }
 });
 </script>
 
