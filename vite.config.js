@@ -23,6 +23,7 @@ export default defineConfig({
         myClock: resolve(__dirname, "./my-clock/app.html"),
         noRollover: resolve(__dirname, "./no-rollover/app.html"),
         dynamicList: resolve(__dirname, "./dynamic-list/app.html"),
+        countdownTimer: resolve(__dirname, "./countdown-timer/app.html"),
       },
     },
   },
